@@ -1,0 +1,38 @@
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - nginx_net
+
+  webcolorblue:
+    image: murichristopher/webcolor_app_image:blue
+    networks:
+      - nginx_net
+
+  webcolorgreen:
+    image: murichristopher/webcolor_app_image:green
+    networks:
+      - nginx_net
+
+  web1:
+    image: murichristopher/webcolor_app_image:white
+    networks:
+      - nginx_net
+
+  web2:
+    image: murichristopher/webcolor_app_image:white
+    networks:
+      - nginx_net
+
+  web3:
+    image: murichristopher/webcolor_app_image:white
+    networks:
+      - nginx_net
+
+networks:
+  nginx_net:
+    driver: bridge
